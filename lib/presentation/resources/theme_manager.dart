@@ -51,11 +51,11 @@ ThemeData getApplicationTheme() {
 
     // text theme
     textTheme: TextTheme(
-      // displayLarge: getLightStyle(
-      //   color: ColorManager.white,
-      //   fontSize: FontSize.s22,
-      // ),
-      displayLarge: getSemiBoldStyle(
+      displayLarge: getLightStyle(
+        color: ColorManager.white,
+        fontSize: FontSize.s22,
+      ),
+      headlineLarge: getSemiBoldStyle(
         color: ColorManager.darkGrey,
         fontSize: FontSize.s16,
       ), //instead of headline1
@@ -63,9 +63,9 @@ ThemeData getApplicationTheme() {
         color: ColorManager.lightGrey,
         fontSize: FontSize.s14,
       ), //instead of subtitle1
-      bodySmall:
-          getRegularStyle(color: ColorManager.grey1), //instead of caption
       bodyLarge:
+          getRegularStyle(color: ColorManager.grey1), //instead of caption
+      bodySmall:
           getRegularStyle(color: ColorManager.grey), //instead of bodyText1
     ),
 
