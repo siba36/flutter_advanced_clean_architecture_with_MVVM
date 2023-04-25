@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/forget_password/forget_password_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/login/login_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/main/main_view.dart';
-import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/onboarding/onboarding_view.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/onboarding/view/onboarding_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/register/register_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/strings_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/splash/splash_view.dart';
