@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/models.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/model/models.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/onboarding/view_model/onboarding_view_model.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/constants_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/font_manager.dart';
