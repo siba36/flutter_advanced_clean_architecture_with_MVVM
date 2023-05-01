@@ -16,13 +16,13 @@ class LoginUseCase implements BaseUseCase<LoginUseCaseInput, Authentication> {
   Future<Either<Failure, Authentication>> execute(
       LoginUseCaseInput input) async {
     return await repository
-        .login(LoginRequest(email: input.email, password: input.password));
+        .login(LoginRequest(email: input.username, password: input.password));
   }
 }
 
 class LoginUseCaseInput {
-  final String email;
+  final String username;
   final String password;
 
-  const LoginUseCaseInput({required this.email, required this.password});
+  const LoginUseCaseInput({required this.username, required this.password});
 }
