@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_clean_architecture_with_mvvm/app/dependency_injection.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/forget_password/forget_password_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/login/view/login_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/main/main_view.dart';
@@ -27,7 +26,6 @@ class RouteGenerator {
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => const OnBoardingView());
       case Routes.loginRoute:
-        initLoginModule();
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterView());
