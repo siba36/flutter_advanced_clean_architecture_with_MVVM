@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/color_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/font_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/styles_manager.dart';
@@ -22,6 +23,10 @@ ThemeData getApplicationTheme() {
 
     // app bar theme
     appBarTheme: AppBarTheme(
+      // systemOverlayStyle: const SystemUiOverlayStyle(
+      //   statusBarBrightness: Brightness.light,
+      //   statusBarIconBrightness: Brightness.light,
+      // ),
       centerTitle: true,
       color: ColorManager.primary,
       elevation: AppSize.s4,

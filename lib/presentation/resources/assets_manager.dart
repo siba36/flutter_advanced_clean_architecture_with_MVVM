@@ -1,4 +1,5 @@
 const imagePath = 'assets/images';
+const jsonPath = 'assets/json';
 
 class ImageAssets {
   static const splashLogo = '$imagePath/splash_logo.png';
@@ -10,4 +11,10 @@ class ImageAssets {
   static const leftArrowIcon = '$imagePath/left_arrow_ic.svg';
   static const hollowCircleIcon = '$imagePath/hollow_circle_ic.svg';
   static const solidCircleIcon = '$imagePath/solid_circle_ic.svg';
+}
+
+class JsonAssets {
+  static const loading = '$jsonPath/loading.json';
+  static const error = '$jsonPath/error.json';
+  static const empty = '$jsonPath/empty.json';
 }

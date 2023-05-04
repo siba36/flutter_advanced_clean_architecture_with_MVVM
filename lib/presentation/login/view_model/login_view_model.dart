@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/usecases/login_usecase.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/base/base_view_model.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/common/freezed_data_classes.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/common/state_renderer/state_renderer_impl.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/common/state_renderer/state_renederer.dart';
 
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
@@ -15,13 +17,13 @@ class LoginViewModel extends BaseViewModel
       StreamController<void>.broadcast();
 
   var loginObject = LoginObject("", "");
-  // final LoginUseCase loginUseCase;
+  final LoginUseCase loginUseCase;
 
-  LoginViewModel();
-  // LoginViewModel({required this.loginUseCase});
+  LoginViewModel({required this.loginUseCase});
 
   @override
   void dispose() {
+    super.dispose();
     _userNameStreamController.close();
     _passwordStreamController.close();
     _areAllInputsValidController.close();
@@ -29,7 +31,8 @@ class LoginViewModel extends BaseViewModel
 
   @override
   void start() {
-    // TODO: implement start
+    //view model should tell the view to show content state
+    inputState.add(ContentState());
   }
 
   @override
@@ -57,17 +60,21 @@ class LoginViewModel extends BaseViewModel
 
   @override
   login() async {
-    // final result = await loginUseCase.execute(
-    //   LoginUseCaseInput(
-    //     username: loginObject.username,
-    //     password: loginObject.password,
-    //   ),
-    // );
-    // result.fold((failure) {
-    //   print(failure.message);
-    // }, (data) {
-    //   print(data.customer!.name);
-    // });
+    inputState.add(
+        LoadingState(stateRendererType: StateRendererType.popupLoadingState));
+    final result = await loginUseCase.execute(
+      LoginUseCaseInput(
+        username: loginObject.username,
+        password: loginObject.password,
+      ),
+    );
+    result.fold((failure) {
+      inputState.add(ErrorState(
+          stateRendererType: StateRendererType.popupErrorState,
+          message: failure.message));
+    }, (data) {
+      inputState.add(ContentState());
+    });
   }
 
   @override
