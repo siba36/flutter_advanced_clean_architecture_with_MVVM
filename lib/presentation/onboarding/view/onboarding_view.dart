@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/app/app_preferences.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/model/models.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/onboarding/view_model/onboarding_view_model.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/constants_manager.dart';
-import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/font_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/routes_manager.dart';
-import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/styles_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/values_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../app/dependency_injection.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/color_manager.dart';
 import '../../resources/strings_manager.dart';
@@ -23,9 +23,11 @@ class OnBoardingView extends StatefulWidget {
 class _OnBoardingViewState extends State<OnBoardingView> {
   final PageController _pageController = PageController();
   final OnBoardingViewModel _viewModel = OnBoardingViewModel();
+  final AppPreferences _appPreferences = instance<AppPreferences>();
 
   _bind() {
     _viewModel.start();
+    _appPreferences.setOnBoardingScreenViewed();
   }
 
   @override

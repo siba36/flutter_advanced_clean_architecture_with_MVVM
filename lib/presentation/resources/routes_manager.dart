@@ -8,6 +8,8 @@ import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resou
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/splash/splash_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/store_details/store_details_view.dart';
 
+import '../../app/dependency_injection.dart';
+
 class Routes {
   static const String splashRoute = '/';
   static const String onBoardingRoute = '/onBoarding';
@@ -26,6 +28,7 @@ class RouteGenerator {
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => const OnBoardingView());
       case Routes.loginRoute:
+        initLoginModule();
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterView());
