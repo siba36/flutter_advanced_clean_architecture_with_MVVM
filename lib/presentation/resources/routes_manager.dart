@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/forget_password/forget_password_view.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/forget_password/view/forgot_password_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/login/view/login_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/main/main_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/onboarding/view/onboarding_view.dart';
@@ -15,7 +15,7 @@ class Routes {
   static const String onBoardingRoute = '/onBoarding';
   static const String loginRoute = '/login';
   static const String registerRoute = '/register';
-  static const String forgetPasswordRoute = '/forgetPassword';
+  static const String forgotPasswordRoute = '/forgetPassword';
   static const String mainRoute = '/main';
   static const String storeDetailsRoute = '/storeDetails';
 }
@@ -32,9 +32,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterView());
-      case Routes.forgetPasswordRoute:
+      case Routes.forgotPasswordRoute:
+        initForgotPasswordModule();
         return MaterialPageRoute(
-            builder: (context) => const ForgetPasswordView());
+            builder: (context) => const ForgotPasswordView());
       case Routes.mainRoute:
         return MaterialPageRoute(builder: (_) => const MainView());
       case Routes.storeDetailsRoute:

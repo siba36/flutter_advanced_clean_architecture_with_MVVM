@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/usecases/forgot_password_usecase.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/forget_password/view_model/forgot_password_view_model.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -56,5 +58,14 @@ initLoginModule() {
         () => LoginUseCase(repository: instance()));
     instance.registerFactory<LoginViewModel>(
         () => LoginViewModel(loginUseCase: instance()));
+  }
+}
+
+initForgotPasswordModule() {
+  if (!GetIt.I.isRegistered<ForgotPasswordUseCase>()) {
+    instance.registerFactory<ForgotPasswordUseCase>(
+        () => ForgotPasswordUseCase(repository: instance()));
+    instance.registerFactory<ForgotPasswordViewModel>(
+        () => ForgotPasswordViewModel(forgotPasswordUseCase: instance()));
   }
 }
