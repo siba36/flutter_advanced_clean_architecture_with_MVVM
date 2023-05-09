@@ -31,4 +31,6 @@ class AppStrings {
   static const loading = 'loading...';
   static const retryAgain = 'Retry again';
   static const ok = 'Ok';
+
+  static const success = 'success';
 }

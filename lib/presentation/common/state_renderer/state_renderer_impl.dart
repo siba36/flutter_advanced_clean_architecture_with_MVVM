@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/app/constants.dart';
@@ -60,6 +58,18 @@ class EmptyState extends FlowState {
       StateRendererType.fullScreenEmptyState;
 }
 
+class SuccessState extends FlowState {
+  String message;
+  SuccessState({required this.message});
+
+  @override
+  String getMessage() => message;
+
+  @override
+  StateRendererType getStateRendererType() =>
+      StateRendererType.popupSuccessState;
+}
+
 extension FlowStateExtension on FlowState {
   Widget getScreenWidget(BuildContext context, Widget contentScreenWidget,
       Function retryActionFunction) {
@@ -97,6 +107,11 @@ extension FlowStateExtension on FlowState {
             message: getMessage(),
             retryActionFunction: () {});
 
+      case SuccessState:
+        dismissDialog(context);
+        showPopup(context, getMessage(), getStateRendererType(),
+            title: AppStrings.success);
+        return contentScreenWidget;
       default:
         dismissDialog(context);
         return contentScreenWidget;
@@ -112,13 +127,15 @@ extension FlowStateExtension on FlowState {
     }
   }
 
-  void showPopup(BuildContext context, String message,
-      StateRendererType stateRendererType) {
+  void showPopup(
+      BuildContext context, String message, StateRendererType stateRendererType,
+      {String title = Constants.empty}) {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => showDialog(
         context: context,
         builder: (context) => StateRenderer(
           stateRendererType: stateRendererType,
+          title: title,
           message: message,
           retryActionFunction: () {},
         ),

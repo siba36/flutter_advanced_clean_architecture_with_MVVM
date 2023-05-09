@@ -63,7 +63,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              '/customer/forgetPassword',
+              '/customer/forgotPassword',
               queryParameters: queryParameters,
               data: _data,
             )
