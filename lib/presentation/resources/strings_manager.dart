@@ -25,7 +25,7 @@ class AppStrings {
   static const registerText = 'Not a member? Sign up';
 
   static const email = 'email';
-  static const emailError = 'email is invalid';
+  static const emailError = 'email format is wrong';
   static const resetPassword = 'reset password';
 
   static const loading = 'loading...';
@@ -33,4 +33,16 @@ class AppStrings {
   static const ok = 'Ok';
 
   static const success = 'success';
+
+  static const userNameInvalid = 'user name should at least be 8 characters';
+  static const mobileNumberInvalid =
+      'mobile number should at least be 10 digits';
+  static const passwordInvalid = 'password should at least be 6 characters';
+
+  static const register = 'Register';
+  static const alreadyHaveAccount = 'Already have an account? login';
+  static const mobileNumber = 'Mobile Number';
+  static const profilePicture = 'Profile Picture';
+  static const photoGallery = 'photo from gallery';
+  static const photoCamera = 'photo from camera';
 }

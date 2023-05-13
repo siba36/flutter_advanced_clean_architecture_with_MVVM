@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/usecases/forgot_password_usecase.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/usecases/register_usecase.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/forget_password/view_model/forgot_password_view_model.dart';
 import 'package:get_it/get_it.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,6 +15,7 @@ import '../data/repository_impl/repository_impl.dart';
 import '../domain/repository/repository.dart';
 import '../domain/usecases/login_usecase.dart';
 import '../presentation/login/view_model/login_view_model.dart';
+import '../presentation/register/view_model/register_view_model.dart';
 import 'app_preferences.dart';
 
 final instance = GetIt.instance;
@@ -67,5 +70,15 @@ initForgotPasswordModule() {
         () => ForgotPasswordUseCase(repository: instance()));
     instance.registerFactory<ForgotPasswordViewModel>(
         () => ForgotPasswordViewModel(forgotPasswordUseCase: instance()));
+  }
+}
+
+initRegisterModule() {
+  if (!GetIt.I.isRegistered<RegisterUseCase>()) {
+    instance.registerFactory<RegisterUseCase>(
+        () => RegisterUseCase(repository: instance()));
+    instance.registerFactory<RegisterViewModel>(
+        () => RegisterViewModel(registerUseCase: instance()));
+    instance.registerFactory<ImagePicker>(() => ImagePicker());
   }
 }

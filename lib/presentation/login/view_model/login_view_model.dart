@@ -7,7 +7,7 @@ import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/commo
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/common/state_renderer/state_renederer.dart';
 
 class LoginViewModel extends BaseViewModel
-    with LoginViewModelInputs, LoginViewModelOutputs {
+    with LoginViewModelInput, LoginViewModelOutput {
   final StreamController _userNameStreamController =
       StreamController<String>.broadcast();
   final StreamController _passwordStreamController =
@@ -108,7 +108,7 @@ class LoginViewModel extends BaseViewModel
   }
 }
 
-abstract class LoginViewModelInputs {
+abstract class LoginViewModelInput {
   setUsername(String username);
   setPassword(String password);
   login();
@@ -118,7 +118,7 @@ abstract class LoginViewModelInputs {
   Sink get inputAreAllInputsValid;
 }
 
-abstract class LoginViewModelOutputs {
+abstract class LoginViewModelOutput {
   Stream<bool> get outIsUsernameValid;
   Stream<bool> get outIsPasswordValid;
   Stream<bool> get outAreAllInputsValid;
