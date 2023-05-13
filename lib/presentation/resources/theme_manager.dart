@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/color_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/font_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/styles_manager.dart';
@@ -70,6 +69,10 @@ ThemeData getApplicationTheme() {
       ),
       titleMedium: getMediumStyle(
         color: ColorManager.primary,
+        fontSize: FontSize.s16,
+      ),
+      titleSmall: getRegularStyle(
+        color: ColorManager.white,
         fontSize: FontSize.s16,
       ),
       bodyLarge: getRegularStyle(color: ColorManager.grey1),
