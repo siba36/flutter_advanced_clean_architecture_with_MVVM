@@ -46,3 +46,47 @@ class Authentication {
 
   Authentication({required this.customer, required this.contacts});
 }
+
+class Service {
+  int id;
+  String title;
+  String image;
+
+  Service({required this.id, required this.title, required this.image});
+}
+
+class BannerAd {
+  int id;
+  String title;
+  String image;
+  String link;
+
+  BannerAd(
+      {required this.id,
+      required this.title,
+      required this.image,
+      required this.link});
+}
+
+class Store {
+  int id;
+  String title;
+  String image;
+
+  Store({required this.id, required this.title, required this.image});
+}
+
+class HomeData {
+  List<Service> services;
+  List<BannerAd> banners;
+  List<Store> stores;
+
+  HomeData(
+      {required this.services, required this.banners, required this.stores});
+}
+
+class HomeObject {
+  HomeData data;
+
+  HomeObject({required this.data});
+}

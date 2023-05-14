@@ -6,6 +6,7 @@ abstract class RemoteDataSource {
   Future<AuthenticationResponse> login(LoginRequest loginRequest);
   Future<AuthenticationResponse> register(RegisterRequest registerRequest);
   Future<ForgotPasswordResponse> forgotPassword(String email);
+  Future<HomeResponse> getHomeData();
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -34,5 +35,10 @@ class RemoteDataSourceImpl implements RemoteDataSource {
         registerRequest.email,
         registerRequest.password,
         ""); //registerRequest.profilePicture); //because the mock API takes an empty image
+  }
+
+  @override
+  Future<HomeResponse> getHomeData() async {
+    return await appServiceClient.getHomeData();
   }
 }

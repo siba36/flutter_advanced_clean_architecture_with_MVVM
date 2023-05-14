@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:retrofit/retrofit.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/app/constants.dart';
+import 'package:retrofit/retrofit.dart';
+
 import '../response/responses.dart';
 
 part 'app_api.g.dart';
@@ -26,4 +27,7 @@ abstract class AppServiceClient {
     @Field('password') String password,
     @Field('profile_picture') String profilePicture,
   );
+
+  @GET('/home')
+  Future<HomeResponse> getHomeData();
 }
