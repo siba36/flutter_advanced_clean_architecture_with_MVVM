@@ -75,17 +75,15 @@ extension HomeResponseMapper on HomeResponse? {
         .cast<Service>()
         .toList();
 
-    List<Store> stores = (this
-                ?.data
-                ?.services
-                ?.map((storeResponse) => storeResponse.toDomain()) ??
-            const Iterable.empty())
-        .cast<Store>()
-        .toList();
+    List<Store> stores =
+        (this?.data?.stores?.map((storeResponse) => storeResponse.toDomain()) ??
+                const Iterable.empty())
+            .cast<Store>()
+            .toList();
 
     List<BannerAd> banners = (this
                 ?.data
-                ?.services
+                ?.banners
                 ?.map((bannerResponse) => bannerResponse.toDomain()) ??
             const Iterable.empty())
         .cast<BannerAd>()

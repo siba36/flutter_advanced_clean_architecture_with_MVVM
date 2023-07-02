@@ -13,8 +13,10 @@ import '../data/network/dio_factory.dart';
 import '../data/network/network_info.dart';
 import '../data/repository_impl/repository_impl.dart';
 import '../domain/repository/repository.dart';
+import '../domain/usecases/home_usecase.dart';
 import '../domain/usecases/login_usecase.dart';
 import '../presentation/login/view_model/login_view_model.dart';
+import '../presentation/main/pages/home/view_model/home_view_model.dart';
 import '../presentation/register/view_model/register_view_model.dart';
 import 'app_preferences.dart';
 
@@ -80,5 +82,14 @@ initRegisterModule() {
     instance.registerFactory<RegisterViewModel>(
         () => RegisterViewModel(registerUseCase: instance()));
     instance.registerFactory<ImagePicker>(() => ImagePicker());
+  }
+}
+
+initHomeModule() {
+  if (!GetIt.I.isRegistered<HomeUseCase>()) {
+    instance.registerFactory<HomeUseCase>(
+        () => HomeUseCase(repository: instance()));
+    instance.registerFactory<HomeViewModel>(
+        () => HomeViewModel(homeUseCase: instance()));
   }
 }

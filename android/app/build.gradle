@@ -60,6 +60,7 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    namespace 'com.example.flutter_advanced_clean_architecture_with_mvvm'
 }
 
 flutter {

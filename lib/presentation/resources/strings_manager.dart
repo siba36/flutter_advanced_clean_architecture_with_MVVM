@@ -50,4 +50,7 @@ class AppStrings {
   static const notification = 'Notification';
   static const search = 'Search';
   static const settings = 'Settings';
+
+  static const services = "Services";
+  static const stores = "Stores";
 }
