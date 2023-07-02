@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  HomeViewModel _viewModel = instance<HomeViewModel>();
+  final HomeViewModel _viewModel = instance<HomeViewModel>();
 
   _bind() {
     _viewModel.start();
@@ -47,22 +47,18 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _getContentWidget() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _getBannerCarousel(),
-        _getSection(AppStrings.services),
-        _getServices(),
-        _getSection(AppStrings.stores),
-        _getStores()
-      ],
-    );
-  }
-
-  Widget _getBannerCarousel() {
-    return StreamBuilder<List<BannerAd>>(
-      stream: _viewModel.outputBanners,
-      builder: (context, snapshot) => _getBannersWidget(snapshot.data),
+    return StreamBuilder<HomeViewObject>(
+      stream: _viewModel.outputHomeData,
+      builder: (context, snapshot) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _getBannersWidget(snapshot.data?.banners),
+          _getSection(AppStrings.services),
+          _getServicesWidget(snapshot.data?.services),
+          _getSection(AppStrings.stores),
+          _getStoresWidget(snapshot.data?.stores),
+        ],
+      ),
     );
   }
 
@@ -114,13 +110,6 @@ class _HomePageState extends State<HomePage> {
         bottom: AppPadding.p2,
       ),
       child: Text(title, style: Theme.of(context).textTheme.labelSmall),
-    );
-  }
-
-  Widget _getServices() {
-    return StreamBuilder<List<Service>>(
-      stream: _viewModel.outputServices,
-      builder: (context, snapshot) => _getServicesWidget(snapshot.data),
     );
   }
 
@@ -176,13 +165,6 @@ class _HomePageState extends State<HomePage> {
     } else {
       return Container();
     }
-  }
-
-  Widget _getStores() {
-    return StreamBuilder<List<Store>>(
-      stream: _viewModel.outputStores,
-      builder: (context, snapshot) => _getStoresWidget(snapshot.data),
-    );
   }
 
   Widget _getStoresWidget(List<Store>? stores) {
