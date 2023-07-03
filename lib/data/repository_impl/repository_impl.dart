@@ -7,13 +7,18 @@ import 'package:flutter_advanced_clean_architecture_with_mvvm/data/network/reque
 import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/model/models.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/repository/repository.dart';
 
+import '../data_sources/local_data_source.dart';
 import '../data_sources/remote_data_source.dart';
 
 class RepositoryImpl implements Repository {
   NetworkInfo networkInfo;
   RemoteDataSource remoteDataSource;
+  LocalDataSource localDataSource;
 
-  RepositoryImpl({required this.networkInfo, required this.remoteDataSource});
+  RepositoryImpl(
+      {required this.networkInfo,
+      required this.remoteDataSource,
+      required this.localDataSource});
 
   @override
   Future<Either<Failure, Authentication>> login(
@@ -81,21 +86,30 @@ class RepositoryImpl implements Repository {
 
   @override
   Future<Either<Failure, HomeObject>> getHomeData() async {
-    if (await networkInfo.isConnected) {
-      try {
-        final response = await remoteDataSource.getHomeData();
-        if (response.status == APIInternalStatus.success) {
-          return right(response.toDomain());
-        } else {
-          return left(Failure(
-              statusCode: APIInternalStatus.failure,
-              message: response.message ?? ResponseMessage.DEFAULT));
+    try {
+      // get response from cache
+      final response = await localDataSource.getHomeData();
+      return right(response.toDomain());
+    } catch (cacheError) {
+      //cache is empty or invalid
+      //get home data from server
+      if (await networkInfo.isConnected) {
+        try {
+          final response = await remoteDataSource.getHomeData();
+          if (response.status == APIInternalStatus.success) {
+            localDataSource.saveHomeDataToCache(response);
+            return right(response.toDomain());
+          } else {
+            return left(Failure(
+                statusCode: APIInternalStatus.failure,
+                message: response.message ?? ResponseMessage.DEFAULT));
+          }
+        } catch (error) {
+          return left(ErrorHandler.handler(error).failure);
         }
-      } catch (error) {
-        return left(ErrorHandler.handler(error).failure);
+      } else {
+        return left(DataSource.noInternetConnection.getFailure());
       }
-    } else {
-      return left(DataSource.noInternetConnection.getFailure());
     }
   }
 }

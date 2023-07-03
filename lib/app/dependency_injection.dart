@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/data/data_sources/local_data_source.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/usecases/forgot_password_usecase.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/usecases/register_usecase.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/forget_password/view_model/forgot_password_view_model.dart';
@@ -47,14 +48,16 @@ Future<void> initAppModule() async {
   instance.registerLazySingleton<AppServiceClient>(
       () => AppServiceClient(dio: dio));
 
-  // remote data source
+  // data sources
   instance.registerLazySingleton<RemoteDataSource>(() =>
       RemoteDataSourceImpl(appServiceClient: instance<AppServiceClient>()));
+  instance.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
 
   // repository
-
-  instance.registerLazySingleton<Repository>(() =>
-      RepositoryImpl(networkInfo: instance(), remoteDataSource: instance()));
+  instance.registerLazySingleton<Repository>(() => RepositoryImpl(
+      networkInfo: instance(),
+      remoteDataSource: instance(),
+      localDataSource: instance()));
 }
 
 initLoginModule() {
