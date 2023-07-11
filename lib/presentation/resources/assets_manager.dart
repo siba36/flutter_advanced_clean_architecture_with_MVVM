@@ -3,6 +3,7 @@ const jsonPath = 'assets/json';
 
 class ImageAssets {
   static const splashLogo = '$imagePath/splash_logo.png';
+  static const emptyImage = '$imagePath/empty_image.png';
   static const onBoardingLogo1 = '$imagePath/onboarding_logo1.svg';
   static const onBoardingLogo2 = '$imagePath/onboarding_logo2.svg';
   static const onBoardingLogo3 = '$imagePath/onboarding_logo3.svg';

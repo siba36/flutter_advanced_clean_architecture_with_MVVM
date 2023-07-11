@@ -6,7 +6,7 @@ import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/onboa
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/register/view/register_view.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/strings_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/splash/splash_view.dart';
-import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/store_details/store_details_view.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/store_details/view/store_details_view.dart';
 
 import '../../app/dependency_injection.dart';
 
@@ -41,6 +41,7 @@ class RouteGenerator {
         initHomeModule();
         return MaterialPageRoute(builder: (_) => const MainView());
       case Routes.storeDetailsRoute:
+        initStoreDetailsModule();
         return MaterialPageRoute(builder: (_) => const StoreDetailsView());
       default:
         return _undefinedRoute();

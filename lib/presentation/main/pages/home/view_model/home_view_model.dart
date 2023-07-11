@@ -28,19 +28,23 @@ class HomeViewModel extends BaseViewModel
         stateRendererType: StateRendererType.fullScreenLoadingState));
     final result = await homeUseCase.execute(Void);
     result.fold(
-        (failure) => inputState.add(
-              ErrorState(
-                stateRendererType: StateRendererType.fullScreenErrorState,
-                message: failure.message,
-              ),
-            ), (homeObject) {
-      inputState.add(ContentState());
-      inputHomeData.add(HomeViewObject(
-        banners: homeObject.data.banners,
-        stores: homeObject.data.stores,
-        services: homeObject.data.services,
-      ));
-    });
+      (failure) => inputState.add(
+        ErrorState(
+          stateRendererType: StateRendererType.fullScreenErrorState,
+          message: failure.message,
+        ),
+      ),
+      (homeObject) {
+        inputState.add(ContentState());
+        inputHomeData.add(
+          HomeViewObject(
+            banners: homeObject.data.banners,
+            stores: homeObject.data.stores,
+            services: homeObject.data.services,
+          ),
+        );
+      },
+    );
   }
 
   @override

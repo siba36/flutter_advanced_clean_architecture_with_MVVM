@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/data/data_sources/local_data_source.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/usecases/forgot_password_usecase.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/usecases/register_usecase.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/usecases/store_details_usecase.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/forget_password/view_model/forgot_password_view_model.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/store_details/view_model/store_details_view_model.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -94,5 +96,14 @@ initHomeModule() {
         () => HomeUseCase(repository: instance()));
     instance.registerFactory<HomeViewModel>(
         () => HomeViewModel(homeUseCase: instance()));
+  }
+}
+
+initStoreDetailsModule() {
+  if (!GetIt.I.isRegistered<StoreDetailsUseCase>()) {
+    instance.registerFactory<StoreDetailsUseCase>(
+        () => StoreDetailsUseCase(repository: instance()));
+    instance.registerFactory<StoreDetailsViewModel>(
+        () => StoreDetailsViewModel(storeDetailsUseCase: instance()));
   }
 }

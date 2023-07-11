@@ -53,4 +53,7 @@ class AppStrings {
 
   static const services = "Services";
   static const stores = "Stores";
+
+  static const details = "Details";
+  static const about = "About Store";
 }
