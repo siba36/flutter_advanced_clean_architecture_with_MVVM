@@ -13,6 +13,11 @@ class ImageAssets {
   static const hollowCircleIcon = '$imagePath/hollow_circle_ic.svg';
   static const solidCircleIcon = '$imagePath/solid_circle_ic.svg';
   static const photoCamera = '$imagePath/photo_camera_ic.svg';
+  static const changeLanguage = '$imagePath/change_lang_ic.svg';
+  static const contactUs = '$imagePath/contact_us_ic.svg';
+  static const inviteFriends = '$imagePath/invite_friends_ic.svg';
+  static const logout = '$imagePath/logout_ic.svg';
+  static const settingsRightArrow = '$imagePath/settings_right_arrow_ic.svg';
 }
 
 class JsonAssets {

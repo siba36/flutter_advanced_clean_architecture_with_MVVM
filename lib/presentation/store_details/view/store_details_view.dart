@@ -32,7 +32,7 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Store Details",
+        title: Text(AppStrings.storeDetails,
             style: Theme.of(context).textTheme.titleSmall),
       ),
       body: Center(
