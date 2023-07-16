@@ -1,6 +1,11 @@
+import 'dart:math' as math;
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/app/app_preferences.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/data/data_sources/local_data_source.dart';
+import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/language_manager.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -30,10 +35,14 @@ class _SettingsPageState extends State<SettingsPage> {
           ListTile(
             leading: SvgPicture.asset(ImageAssets.changeLanguage),
             title: Text(
-              AppStrings.changeLanguage,
+              AppStrings.changeLanguage.tr(),
               style: Theme.of(context).textTheme.bodyLarge,
             ),
-            trailing: SvgPicture.asset(ImageAssets.settingsRightArrow),
+            trailing: Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.rotationY(isRTL() ? math.pi : 0),
+              child: SvgPicture.asset(ImageAssets.settingsRightArrow),
+            ),
             onTap: () {
               _changeLanguage();
             },
@@ -41,10 +50,14 @@ class _SettingsPageState extends State<SettingsPage> {
           ListTile(
             leading: SvgPicture.asset(ImageAssets.contactUs),
             title: Text(
-              AppStrings.contactUs,
+              AppStrings.contactUs.tr(),
               style: Theme.of(context).textTheme.bodyLarge,
             ),
-            trailing: SvgPicture.asset(ImageAssets.settingsRightArrow),
+            trailing: Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.rotationY(isRTL() ? math.pi : 0),
+              child: SvgPicture.asset(ImageAssets.settingsRightArrow),
+            ),
             onTap: () {
               _contactUs();
             },
@@ -52,10 +65,14 @@ class _SettingsPageState extends State<SettingsPage> {
           ListTile(
             leading: SvgPicture.asset(ImageAssets.inviteFriends),
             title: Text(
-              AppStrings.inviteFriends,
+              AppStrings.inviteFriends.tr(),
               style: Theme.of(context).textTheme.bodyLarge,
             ),
-            trailing: SvgPicture.asset(ImageAssets.settingsRightArrow),
+            trailing: Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.rotationY(isRTL() ? math.pi : 0),
+              child: SvgPicture.asset(ImageAssets.settingsRightArrow),
+            ),
             onTap: () {
               _inviteFriends();
             },
@@ -63,7 +80,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ListTile(
             leading: SvgPicture.asset(ImageAssets.logout),
             title: Text(
-              AppStrings.logout,
+              AppStrings.logout.tr(),
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             onTap: () {
@@ -75,8 +92,13 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
+  bool isRTL() {
+    return context.locale == arabicLocale;
+  }
+
   _changeLanguage() {
-    //will be implemented later
+    _appPreferences.changeAppLanguage();
+    Phoenix.rebirth(context);
   }
 
   //my solution

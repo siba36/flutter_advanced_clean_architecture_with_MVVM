@@ -1,65 +1,79 @@
 class AppStrings {
-  static const noRouteFound = 'No Route Found';
+  static const noRouteFound = 'no_route_found';
 
-  static const onBoardingTitle1 = 'SEE THE BEST COURSE #1';
-  static const onBoardingTitle2 = 'SEE THE BEST COURSE #2';
-  static const onBoardingTitle3 = 'SEE THE BEST COURSE #3';
-  static const onBoardingTitle4 = 'SEE THE BEST COURSE #4';
+  static const onBoardingTitle1 = 'on_boarding_title1';
+  static const onBoardingTitle2 = 'on_boarding_title2';
+  static const onBoardingTitle3 = 'on_boarding_title3';
+  static const onBoardingTitle4 = 'on_boarding_title4';
 
-  static const onBoardingSubtitle1 =
-      'Tut app is an awesome flutter application using clean architecture #1';
-  static const onBoardingSubtitle2 =
-      'Tut app is an awesome flutter application using clean architecture #2';
-  static const onBoardingSubtitle3 =
-      'Tut app is an awesome flutter application using clean architecture #3';
-  static const onBoardingSubtitle4 =
-      'Tut app is an awesome flutter application using clean architecture #4';
-  static const skip = 'Skip';
+  static const onBoardingSubtitle1 = 'on_boarding_desc1';
+  static const onBoardingSubtitle2 = 'on_boarding_desc2';
+  static const onBoardingSubtitle3 = 'on_boarding_desc3';
+  static const onBoardingSubtitle4 = 'on_boarding_desc4';
+  static const skip = 'skip';
 
-  static const username = 'Username';
-  static const password = 'Password';
-  static const usernameError = 'Please enter your username';
-  static const passwordError = 'Please enter your password';
-  static const login = 'Login';
-  static const forgetPassword = 'Forget password';
-  static const registerText = 'Not a member? Sign up';
+  static const username = 'username_hint';
+  static const password = 'password_hint';
+  static const usernameError = 'username_error';
+  static const passwordError = 'password_error';
+  static const login = 'login_button';
+  static const forgetPassword = 'forgot_password_text';
+  static const registerText = 'register_text';
 
-  static const email = 'email';
-  static const emailError = 'email format is wrong';
-  static const resetPassword = 'reset password';
+  static const email = 'email_hint';
+  static const emailError = 'invalid_email';
+  static const resetPassword = 'reset_password';
 
-  static const loading = 'loading...';
-  static const retryAgain = 'Retry again';
-  static const ok = 'Ok';
+  static const loading = 'loading';
+  static const retryAgain = 'retry_again';
+  static const ok = 'ok';
+
+  static const userNameInvalid = 'invalid_user_name';
+  static const mobileNumberInvalid = 'invalid_mobile_number';
+  static const passwordInvalid = 'invalid_password';
+
+  static const register = 'register';
+  static const alreadyHaveAccount = 'already_have_account';
+  static const mobileNumber = 'mobile_number_hint';
+  static const profilePicture = 'upload_profile_picture';
+  static const photoGallery = 'photo_gallery';
+  static const photoCamera = 'camera';
+
+  static const home = 'home';
+  static const notification = 'notification';
+  static const search = 'search';
+  static const settings = 'settings';
+
+  static const services = "services";
+  static const stores = "stores";
+
+  static const storeDetails = "store_details";
+  static const details = "details";
+  static const about = "about";
+
+  static const changeLanguage = "change_language";
+  static const contactUs = "contact_us";
+  static const inviteFriends = "invite_your_friends";
+  static const logout = "logout";
 
   static const success = 'success';
+  static const noContent = 'no_content';
+  static const badRequest = 'bad_request_error';
+  static const forbidden = 'forbidden_error';
+  static const unauthorized = 'unauthorized_error';
+  static const notFound = 'not_found_error';
+  static const internalServerError = 'internal_server_error';
 
-  static const userNameInvalid = 'user name should at least be 8 characters';
-  static const mobileNumberInvalid =
-      'mobile number should at least be 10 digits';
-  static const passwordInvalid = 'password should at least be 6 characters';
+  //local status error messages
+  static const connectTimeout = 'timeout_error';
+  static const cancel = 'cancel';
+  static const receiveTimeout = 'timeout_error';
+  static const sendTimeout = 'timeout_error';
+  static const cacheError = 'cache_error';
+  static const noInternetConnection = 'no_internet_error';
+  static const DEFAULT = 'default_error';
 
-  static const register = 'Register';
-  static const alreadyHaveAccount = 'Already have an account? login';
-  static const mobileNumber = 'Mobile Number';
-  static const profilePicture = 'Profile Picture';
-  static const photoGallery = 'photo from gallery';
-  static const photoCamera = 'photo from camera';
-
-  static const home = 'Home';
-  static const notification = 'Notification';
-  static const search = 'Search';
-  static const settings = 'Settings';
-
-  static const services = "Services";
-  static const stores = "Stores";
-
-  static const storeDetails = "Store Details";
-  static const details = "Details";
-  static const about = "About Store";
-
-  static const changeLanguage = "Change Language";
-  static const contactUs = "Contact Us";
-  static const inviteFriends = "Invite Your Friends";
-  static const logout = "Log Out";
+  static const connectionError = 'connection_error';
+  static const badResponse = 'timeout_error';
+  static const badCertificate = 'timeout_error';
 }

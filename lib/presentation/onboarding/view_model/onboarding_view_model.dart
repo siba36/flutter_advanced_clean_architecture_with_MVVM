@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/domain/model/models.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/base/base_view_model.dart';
 
@@ -55,25 +56,25 @@ class OnBoardingViewModel extends BaseViewModel
         numberOfSlides: _list.length));
   }
 
-  List<SliderObject> _getSliderData() => const [
+  List<SliderObject> _getSliderData() => [
         SliderObject(
-          title: AppStrings.onBoardingTitle1,
-          subtitle: AppStrings.onBoardingSubtitle1,
+          title: AppStrings.onBoardingTitle1.tr(),
+          subtitle: AppStrings.onBoardingSubtitle1.tr(),
           imagePath: ImageAssets.onBoardingLogo1,
         ),
         SliderObject(
-          title: AppStrings.onBoardingTitle2,
-          subtitle: AppStrings.onBoardingSubtitle2,
+          title: AppStrings.onBoardingTitle2.tr(),
+          subtitle: AppStrings.onBoardingSubtitle2.tr(),
           imagePath: ImageAssets.onBoardingLogo2,
         ),
         SliderObject(
-          title: AppStrings.onBoardingTitle3,
-          subtitle: AppStrings.onBoardingSubtitle3,
+          title: AppStrings.onBoardingTitle3.tr(),
+          subtitle: AppStrings.onBoardingSubtitle3.tr(),
           imagePath: ImageAssets.onBoardingLogo3,
         ),
         SliderObject(
-          title: AppStrings.onBoardingTitle4,
-          subtitle: AppStrings.onBoardingSubtitle4,
+          title: AppStrings.onBoardingTitle4.tr(),
+          subtitle: AppStrings.onBoardingSubtitle4.tr(),
           imagePath: ImageAssets.onBoardingLogo4,
         ),
       ];

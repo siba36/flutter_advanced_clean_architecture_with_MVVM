@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/values_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/store_details/view_model/store_details_view_model.dart';
@@ -32,7 +33,7 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppStrings.storeDetails,
+        title: Text(AppStrings.storeDetails.tr(),
             style: Theme.of(context).textTheme.titleSmall),
       ),
       body: Center(
@@ -61,9 +62,9 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
           child: Column(
             children: [
               _getMainPhoto(snapshot.data?.image),
-              _getSection(AppStrings.details, snapshot.data?.details),
-              _getSection(AppStrings.services, snapshot.data?.services),
-              _getSection(AppStrings.about, snapshot.data?.about),
+              _getSection(AppStrings.details.tr(), snapshot.data?.details),
+              _getSection(AppStrings.services.tr(), snapshot.data?.services),
+              _getSection(AppStrings.about.tr(), snapshot.data?.about),
             ],
           ),
         );

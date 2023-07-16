@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/assets_manager.dart';
 import 'package:flutter_advanced_clean_architecture_with_mvvm/presentation/resources/font_manager.dart';
@@ -51,7 +52,7 @@ class StateRenderer extends StatelessWidget {
         return _getPopupDialog(context, [
           _getAnimatedImage(JsonAssets.error),
           _getMessage(message),
-          _getButton(AppStrings.ok, context),
+          _getButton(AppStrings.ok.tr(), context),
         ]);
       case StateRendererType.fullScreenLoadingState:
         return _getItemsColumn([
@@ -62,7 +63,7 @@ class StateRenderer extends StatelessWidget {
         return _getItemsColumn([
           _getAnimatedImage(JsonAssets.error),
           _getMessage(message),
-          _getButton(AppStrings.retryAgain, context),
+          _getButton(AppStrings.retryAgain.tr(), context),
         ]);
       case StateRendererType.fullScreenEmptyState:
         return _getItemsColumn([
@@ -76,7 +77,7 @@ class StateRenderer extends StatelessWidget {
           _getAnimatedImage(JsonAssets.success),
           _getMessage(title),
           _getMessage(message),
-          _getButton(AppStrings.ok, context),
+          _getButton(AppStrings.ok.tr(), context),
         ]);
     }
   }

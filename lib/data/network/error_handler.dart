@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 
+import '../../presentation/resources/strings_manager.dart';
 import 'Failure.dart';
 
 enum DataSource {
@@ -28,69 +30,72 @@ extension DataSourceExtension on DataSource {
     switch (this) {
       case DataSource.success:
         return Failure(
-            message: ResponseMessage.success, statusCode: ResponseCode.success);
+            message: ResponseMessage.success.tr(),
+            statusCode: ResponseCode.success);
       case DataSource.noContent:
         return Failure(
-            message: ResponseMessage.noContent,
+            message: ResponseMessage.noContent.tr(),
             statusCode: ResponseCode.noContent);
       case DataSource.badRequest:
         return Failure(
-            message: ResponseMessage.badRequest,
+            message: ResponseMessage.badRequest.tr(),
             statusCode: ResponseCode.badRequest);
       case DataSource.forbidden:
         return Failure(
-            message: ResponseMessage.forbidden,
+            message: ResponseMessage.forbidden.tr(),
             statusCode: ResponseCode.forbidden);
       case DataSource.unauthorized:
         return Failure(
-            message: ResponseMessage.unauthorized,
+            message: ResponseMessage.unauthorized.tr(),
             statusCode: ResponseCode.unauthorized);
       case DataSource.notFound:
         return Failure(
-            message: ResponseMessage.notFound,
+            message: ResponseMessage.notFound.tr(),
             statusCode: ResponseCode.notFound);
       case DataSource.internalServerError:
         return Failure(
-            message: ResponseMessage.internalServerError,
+            message: ResponseMessage.internalServerError.tr(),
             statusCode: ResponseCode.internalServerError);
       case DataSource.connectTimeout:
         return Failure(
-            message: ResponseMessage.connectTimeout,
+            message: ResponseMessage.connectTimeout.tr(),
             statusCode: ResponseCode.connectTimeout);
       case DataSource.cancel:
         return Failure(
-            message: ResponseMessage.cancel, statusCode: ResponseCode.cancel);
+            message: ResponseMessage.cancel.tr(),
+            statusCode: ResponseCode.cancel);
       case DataSource.receiveTimeout:
         return Failure(
-            message: ResponseMessage.receiveTimeout,
+            message: ResponseMessage.receiveTimeout.tr(),
             statusCode: ResponseCode.receiveTimeout);
       case DataSource.sendTimeout:
         return Failure(
-            message: ResponseMessage.sendTimeout,
+            message: ResponseMessage.sendTimeout.tr(),
             statusCode: ResponseCode.sendTimeout);
       case DataSource.cacheError:
         return Failure(
-            message: ResponseMessage.cacheError,
+            message: ResponseMessage.cacheError.tr(),
             statusCode: ResponseCode.cacheError);
       case DataSource.noInternetConnection:
         return Failure(
-            message: ResponseMessage.noInternetConnection,
+            message: ResponseMessage.noInternetConnection.tr(),
             statusCode: ResponseCode.noInternetConnection);
       case DataSource.DEFAULT:
         return Failure(
-            message: ResponseMessage.DEFAULT, statusCode: ResponseCode.DEFAULT);
+            message: ResponseMessage.DEFAULT.tr(),
+            statusCode: ResponseCode.DEFAULT);
 
       case DataSource.connectionError:
         return Failure(
-            message: ResponseMessage.connectionError,
+            message: ResponseMessage.connectionError.tr(),
             statusCode: ResponseCode.connectionError);
       case DataSource.badResponse:
         return Failure(
-            message: ResponseMessage.badResponse,
+            message: ResponseMessage.badResponse.tr(),
             statusCode: ResponseCode.badResponse);
       case DataSource.badCertificate:
         return Failure(
-            message: ResponseMessage.badCertificate,
+            message: ResponseMessage.badCertificate.tr(),
             statusCode: ResponseCode.badCertificate);
     }
   }
@@ -120,28 +125,26 @@ class ResponseCode {
 }
 
 class ResponseMessage {
-  static const String success = 'Success';
-  static const String noContent = 'Success';
-  static const String badRequest = 'Bad request, try again later';
-  static const String forbidden = 'Forbidden request, try again later';
-  static const String unauthorized = 'User is unauthorized, try again later';
-  static const String notFound = 'URL not found, try again later';
-  static const String internalServerError =
-      'Something went wrong, try again later';
+  static const String success = AppStrings.success;
+  static const String noContent = AppStrings.noContent;
+  static const String badRequest = AppStrings.badRequest;
+  static const String forbidden = AppStrings.forbidden;
+  static const String unauthorized = AppStrings.unauthorized;
+  static const String notFound = AppStrings.notFound;
+  static const String internalServerError = AppStrings.internalServerError;
 
   //local status error messages
-  static const String connectTimeout = 'Time out error, try again later';
-  static const String cancel = 'Request was canceled, try again later';
-  static const String receiveTimeout = 'Time out error, try again later';
-  static const String sendTimeout = 'Time out error, try again later';
-  static const String cacheError = 'Cache error, try again later';
-  static const String noInternetConnection =
-      'please check your internet connection';
-  static const String DEFAULT = 'something went wrong, try again later';
+  static const String connectTimeout = AppStrings.connectTimeout;
+  static const String cancel = AppStrings.cancel;
+  static const String receiveTimeout = AppStrings.receiveTimeout;
+  static const String sendTimeout = AppStrings.sendTimeout;
+  static const String cacheError = AppStrings.cacheError;
+  static const String noInternetConnection = AppStrings.noInternetConnection;
+  static const String DEFAULT = AppStrings.DEFAULT;
 
-  static const String connectionError = 'connection error, try again later';
-  static const String badResponse = 'Time out error, try again later';
-  static const String badCertificate = 'Time out error, try again later';
+  static const String connectionError = AppStrings.connectionError;
+  static const String badResponse = AppStrings.badResponse;
+  static const String badCertificate = AppStrings.badCertificate;
 }
 
 class ErrorHandler implements Exception {
